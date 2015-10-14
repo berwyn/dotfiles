@@ -10,6 +10,9 @@ if (Get-Command 'scoop' -errorAction SilentlyContinue -eq '')
 	iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 }
 
+# Configure Scoop to use ~/.scoop, regardless of silly domain settings
+[Environment]::SetEnvironmentVariable("SCOOP", "$HOME\.scoop", "User")
+
 # We need git to successfully use scoop
 scoop install git
 scoop bucket add extras
