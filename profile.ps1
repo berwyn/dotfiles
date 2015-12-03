@@ -159,9 +159,4 @@ function Enable-VSPrompt($ver = 14, $arch = "x64")
     Invoke-BatchFile $path $arch
 }
 
-function Start-MCX
-{                                                                                                                   
-    C:\Users\jgreeley\dev\maritz\core-platform\Survey\Distrib\Server\Setup\App\bin\QServices.exe
-}
-	
 clear-host
