@@ -49,6 +49,15 @@ if has('mouse')
 	set mouse=a
 endif
 
+" Force 256 colors
+set term=xterm
+set t_Co=256
+
+if has('win32') && !has('gui_running') && !empty($CONEMUBUILD)
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+endif
+
 """"""""""""""""
 "=> COLORS/FONTS
 """"""""""""""""
@@ -93,11 +102,25 @@ function! HasPaste()
     return ''
 endfunction
 
+"""""""""""
+"=> AIRLINE
+"""""""""""
+
+function! AirlineInit()
+    let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+endfunction
+autocmd VimEnter * call AirlineInit()
+
 syntax on
 
 set hidden
-let g:racer_cmd = "/Users/berwyn/.cargo/bin/racer"
-let $RUST_SRC_PATH = "/Users/berwyn/dev/rust/src/"
+if has('win32') || has('win64')
+    let g:racer_cmd=$HOME . ".cargo\\bin\\racer"
+    let $RUST_SRC_PATH=$HOME . "dev\\rust\\src\\"
+elseif has('osx')
+    let g:racer_cmd = "/Users/berwyn/.cargo/bin/racer"
+    let $RUST_SRC_PATH = "/Users/berwyn/dev/rust/src/"
+endif
 
 " Color test: Save this file, then enter ':so %'
 " Then enter one of following commands:
