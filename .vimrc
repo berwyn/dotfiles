@@ -14,6 +14,12 @@ set autoread
 "=> UI
 """"""
 
+" gvim
+if has('gui_running')
+    set guioptions-=T " No toolbar
+    set guifont=DejaVu\ Sans\ Mono:h12
+endif
+
 set number
 set numberwidth=5
 highlight LineNr ctermfg=white ctermbg=darkgrey
@@ -50,8 +56,10 @@ if has('mouse')
 endif
 
 " Force 256 colors
-set term=xterm
-set t_Co=256
+if !has('gui_running')
+    set term=xterm
+    set t_Co=256
+endif
 
 if has('win32') && !has('gui_running') && !empty($CONEMUBUILD)
     let &t_AB="\e[48;5;%dm"
@@ -64,6 +72,7 @@ endif
 syntax enable
 
 try
+    colorscheme Tomorrow-Night-Eighties
     color Tomorrow-Night-Eighties
 catch
 endtry
