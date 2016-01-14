@@ -22,3 +22,9 @@
 [submodule ".vim/bundle/vim-jade"]
 	path = .vim/bundle/vim-jade
 	url = git://github.com/digitaltoad/vim-jade.git
+[submodule ".vim/bundle/typescript-vim"]
+	path = .vim/bundle/typescript-vim
+	url = git://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/bundle/vim-localrc"]
+	path = .vim/bundle/vim-localrc
+	url = git://github.com/thinca/vim-localrc.git
