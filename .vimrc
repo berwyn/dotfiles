@@ -17,7 +17,8 @@ set autoread
 " gvim
 if has('gui_running')
     set guioptions-=T " No toolbar
-    set guifont=DejaVu\ Sans\ Mono:h12
+    set guifont=DejaVu\ Sans\ Mono:h10
+    set nowrap
 endif
 
 set number
