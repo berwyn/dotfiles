@@ -1,32 +1,24 @@
 #!/usr/bin/env bash
 
-# Link vim files
-ln -s ./.vimrc ~/.vimrc
-ln -s ./.vim ~/.vim
+echo "Updating submodules"
+git submodule update --init --recursive
 
-# OSX
-if [[ $(uname -a) == Darwin* ]]; then
-    xcode-select --install
+# Install all our apps
+echo "Brewing"
+brew bundle
 
-    if [ ! $(command -v brew) ]; then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-
-    brew install node rust git fish \
-        docker docker-compose docker-machine docker-swarm \
-        go gradle hub pidcat python python3 tig tmux vim brew-cask
-
-    brew cask install github virtualbox vlc skype java google-chrome \
-        visual-studio-code dropbox daisydisk
-
+# Node sucks, give it special attention
+echo "Installing node"
+npm i -g n
+HAS_LATEST=n ls | grep $(n --latest)
+if [[ -z $HAS_LATEST ]]; then
+    n latest
 fi
 
-# Node globals
-npm install -g typescript gulp-cli
-
 # Setup YouCompleteMe
-pushd .
-cd ~/.vim/bundle/YouCompleteMe
+echo "Setting up YCM"
+pushd . 2>&1
+cd .vim/bundle/YouCompleteMe
 ./install.py \
     --clang-completer \
     --omnisharp-completer \

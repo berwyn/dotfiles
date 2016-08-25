@@ -14,6 +14,9 @@ brew 'graphicsmagick'
 brew 'premake', args: ['devel']
 brew 'tmux'
 brew 'cmake'
+brew 'mono'
+brew 'wget'
+brew 'nodejs'
 
 # Android
 cask 'java'

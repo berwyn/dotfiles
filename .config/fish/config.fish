@@ -1,8 +1,8 @@
 # Brew shim
-set -gx PATH /usr/local/bin /usr/local/sbin $PATH
+set -gx PATH /usr/local/bin $PATH
 
 # Go
-set -gx GOPATH ~berwyn/dev/go
+set -gx GOPATH $HOME/dev/go
 set -gx GOBIN $GOPATH/bin
 set -gx PATH $GOBIN $PATH
 
@@ -14,6 +14,14 @@ set -gx PATH ~/.android-sdk/tools ~/.android-sdk/platform-tools $PATH
 
 # Rust
 set -gx RUST_SRC_PATH ~/dev/rust/src
+
+# Fundle
+fundle plugin 'edc/bass'
+fundle init
+
+function nvm
+  bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+end
 
 # Funcs
 function reload -d 'Reloads fish'
