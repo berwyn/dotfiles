@@ -1,39 +1,71 @@
-cask_args appdir: '/Applications'
-
-tap 'caskroom/cask'
-tap 'homebrew/versions'
-
-# Dev tools
-brew 'vim'
-brew 'nvm'
-brew 'ponysay'
-brew 'google-go'
-brew 'rust'
-brew 'rbenv'
-brew 'graphicsmagick'
-brew 'premake', args: ['devel']
-brew 'tmux'
-brew 'cmake'
-brew 'mono'
-brew 'wget'
-brew 'nodejs'
-
-# Android
-cask 'java'
-brew 'gradle'
-brew 'android-sdk'
-brew 'android-ndk'
-
-# Dev UI stuff
-cask 'dotnet'
-cask 'visual-studio-code'
-cask 'firefox'
-cask 'google-chrome'
-cask 'docker'
-cask 'kitematic'
-
-# Gaemz :D
-cask 'battle-net'
-cask 'steam'
-cask 'discord'
-cask 'curse'
+tap "homebrew/dupes"
+tap "homebrew/core"
+tap "homebrew/versions"
+tap "homebrew/bundle"
+tap "caskroom/versions"
+tap "caskroom/cask"
+tap "dart-lang/dart"
+tap "aspnet/dnx"
+cask "java"
+brew "ant"
+brew "readline"
+brew "asciinema"
+brew "autoconf"
+brew "automake"
+brew "bison"
+brew "caddy"
+brew "perl"
+brew "git"
+brew "carthage"
+brew "chakra"
+brew "cocoapods"
+brew "coreutils"
+brew "cython"
+brew "ecm"
+brew "emacs"
+brew "pcre2"
+brew "fish"
+brew "freetype"
+brew "gdb"
+brew "glew"
+brew "glfw", args: ["universal", "without-shared-library"]
+brew "go"
+brew "gradle"
+brew "libtool"
+brew "graphicsmagick"
+brew "hub"
+brew "libimobiledevice"
+brew "ideviceinstaller"
+brew "ios-deploy"
+brew "libevent"
+brew "libffi"
+brew "libsass"
+brew "libssh2"
+brew "libyaml"
+brew "llvm"
+brew "mono"
+brew "pcre"
+brew "pidcat"
+brew "ponysay"
+brew "rbenv"
+brew "reattach-to-user-namespace"
+brew "redis"
+brew "ruby"
+brew "sassc"
+brew "sdl2"
+brew "tig"
+brew "tmux"
+brew "tree"
+brew "vim"
+brew "watchman"
+brew "xhyve"
+brew "yarn"
+brew "dart-lang/dart/dart"
+cask "daisydisk"
+cask "dropbox"
+cask "firefoxdeveloperedition"
+cask "teamviewer"
+cask "the-unarchiver"
+cask "visual-studio-code"
+cask "vlc"
+cask "vlc-webplugin"
