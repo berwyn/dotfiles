@@ -14,6 +14,9 @@ set autoread
 "=> UI
 """"""
 
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 " gvim
 if has('gui_running')
     set guioptions-=T " No toolbar
