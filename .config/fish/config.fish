@@ -2,25 +2,20 @@
 set -gx PATH /usr/local/bin $PATH
 
 # Go
-set -gx GOPATH $HOME/dev/go
-set -gx GOBIN $GOPATH/bin
-set -gx PATH $GOBIN $PATH
+if test -d $HOME/dev/go
+  set -gx GOPATH $HOME/dev/go
+  set -gx GOBIN $GOPATH/bin
+  set -gx PATH $GOBIN $PATH
+end
 
-# Java
-set -gx JAVA8_HOME (/usr/libexec/java_home -v 1.8)
-set -gx JAVA7_HOME (/usr/libexec/java_home -v 1.7)
-
-set -gx PATH ~/.android-sdk/tools ~/.android-sdk/platform-tools $PATH
+# Android
+if test -d ~/.android-sdk
+  set -gx PATH ~/.android-sdk/tools ~/.android-sdk/platform-tools $PATH
+end
 
 # Rust
-set -gx RUST_SRC_PATH ~/dev/rust/src
-
-# Fundle
-fundle plugin 'edc/bass'
-fundle init
-
-function nvm
-  bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+if test -d ~/dev/rust
+  set -gx RUST_SRC_PATH ~/dev/rust/src
 end
 
 # Funcs
@@ -28,11 +23,11 @@ function reload -d 'Reloads fish'
   clear
   source ~/.config/fish/config.fish
 end
- 
+
 function !! -d 'Repeats the last command'
   eval $history[1]
 end
- 
+
 function sudo
   if test "$argv" = !!
     eval command sudo $history[1]
@@ -40,16 +35,16 @@ function sudo
     command sudo $argv
   end
 end
- 
+
 # Doge!
- 
+
 alias wow 'git status'
 alias such git
 alias very git
 alias much git
 alias so git
 alias many git
- 
+
 # various aliases
 alias fucking sudo
 alias glass 'rm -rf'
@@ -58,11 +53,13 @@ alias goddamnit 'which'
 alias shit 'cd ..'
 alias piss 'ls -lah'
 alias cunt vi
- 
+
 # nvlc
 alias nvlc "~/Applications/VLC.app/Contents/MacOS/VLC --intf ncurses"
 
 set -gx EDITOR code
- 
-# Fire up the shell with Luna!
-ponysay -q luna
+
+# Platterz
+rvm default
+set -x PGHOST "localhost"
+

@@ -5,10 +5,12 @@ execute pathogen#infect()
 "=> GENERAL
 """""""""""
 
-filetype plugin on
-filetype indent on
-
-set autoread
+if has('autocmd')
+    filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+    syntax enable
+end
 
 """"""
 "=> UI
@@ -33,6 +35,13 @@ set ruler
 set cursorline
 set showcmd
 set cmdheight=1
+set autoread
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
+set display+=lastline
+
 
 " A buffer becomes hidden when it is abandoned
 set hid

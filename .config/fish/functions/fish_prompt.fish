@@ -1,4 +1,4 @@
- name: idan-luna
+# name: idan-luna
 # Display the following bits on the left:
 # * Virtualenv name (if applicable, see https://github.com/adambrenecki/virtualfish)
 # * Current directory name
@@ -35,10 +35,6 @@ function fish_prompt
   # Display the current directory name
   echo -n -s $cwd $normal
 
-<<<<<<< HEAD
-
-=======
->>>>>>> tmux updates
   # Show git branch and dirty state
   if [ (_git_branch_name) ]
     set -l git_branch '(' (_git_branch_name) ')'
