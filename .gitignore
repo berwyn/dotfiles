@@ -1,8 +1,13 @@
 fishd.*
 .config/configstore
 .config/hub
-.config/fundle
+.config/fish/fundle
 .config/yarn
+.config/heroku
+.config/csharp.history
+.config/StardewValley
+
+**__pycache__
 
 # Created by https://www.gitignore.io/api/macos,windows,linux,visualstudiocode,vim
 

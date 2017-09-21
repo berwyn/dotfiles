@@ -27,6 +27,10 @@ function fish_prompt
   # Add a newline before prompts
   echo -e ""
 
+  if set -q iterm2_hostname
+    iterm2_prompt_mark
+  end
+
   # Display [venvname] if in a virtualenv
   if set -q VIRTUAL_ENV
       echo -n -s (set_color -b cyan black) '[' (basename "$VIRTUAL_ENV") ']' $normal ' '
