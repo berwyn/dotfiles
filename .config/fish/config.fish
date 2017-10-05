@@ -45,7 +45,7 @@ alias shit 'cd ..'
 alias piss 'ls -lah'
 alias cunt vi
 alias ls exa
-alias ll="exa -la"
+alias ll="exa -la --git"
 
 # nvlc
 alias nvlc "~/Applications/VLC.app/Contents/MacOS/VLC --intf ncurses"
@@ -57,4 +57,6 @@ rvm default
 set -x PGHOST "localhost"
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+. ~/.fishmarks/marks.fish
 

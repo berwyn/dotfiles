@@ -6,6 +6,8 @@ fishd.*
 .config/heroku
 .config/csharp.history
 .config/StardewValley
+.config/.mono
+.config/micro
 
 **__pycache__
 
