@@ -8,6 +8,9 @@ fishd.*
 .config/StardewValley
 .config/.mono
 .config/micro
+.config/inkscape
+.config/htop
+.config/gtk-2.0
 
 **__pycache__
 
