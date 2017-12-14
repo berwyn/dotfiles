@@ -1,39 +1,28 @@
-Key.on('left', ['cmd', 'ctrl'], () => {
-    let win = Window.focused()
-    let screen = win.screen().flippedVisibleFrame()
+require('./constants.js')
+require('./helpers.js')
+require('./grid.js')
 
-    win.setTopLeft({ x: 0, y: 0 })
-    win.setSize({ width: screen.width / 2, height: screen.height })
+Key.on('left', PREFIX, () => {
+    let { window, grid } = buildGridForCurrentWindow(1, 2)
+    grid.resizeWindow(window, 0, 0)
 })
 
-Key.on('right', ['cmd', 'ctrl'], () => {
-    let win = Window.focused()
-    let screen = win.screen().flippedVisibleFrame()
-
-    win.setTopLeft({ x: screen.width / 2, y: 0 })
-    win.setSize({ width: screen.width / 2, height: screen.height })
+Key.on('right', PREFIX, () => {
+    let { window, grid } = buildGridForCurrentWindow(1, 2)
+    grid.resizeWindow(window, 0, 1)
 })
 
-Key.on('1', ['cmd', 'ctrl'], () => {
-    let win = Window.focused()
-    let screen = win.screen().flippedVisibleFrame()
+Key.on('1', PREFIX, sameKeyChord(isChord => {
+    let { window, grid } = buildGridForCurrentWindow(1, 3)
+    grid.resizeWindow(window, 0, 0, 1, isChord ? 2 : 1)
+}))
 
-    win.setTopLeft({ x: 0, y: 0 })
-    win.setSize({ width: screen.width / 3, height: screen.height })
-})
+Key.on('2', PREFIX, sameKeyChord(isChord => {
+    let { window, grid } = buildGridForCurrentWindow(1, 3)
+    grid.resizeWindow(window, 0, 1, 1, isChord ? 2 : 1)
+}))
 
-Key.on('2', ['cmd', 'ctrl'], () => {
-    let win = Window.focused()
-    let screen = win.screen().flippedVisibleFrame()
-
-    win.setTopLeft({ x: screen.width / 3, y: 0 })
-    win.setSize({ width: screen.width / 3, height: screen.height })
-})
-
-Key.on('3', ['cmd', 'ctrl'], () => {
-    let win = Window.focused()
-    let screen = win.screen().flippedVisibleFrame()
-
-    win.setTopLeft({ x: screen.width / 3 * 2, y: 0 })
-    win.setSize({ width: screen.width / 3, height: screen.height })
+Key.on('3', PREFIX, () => {
+    let { window, grid } = buildGridForCurrentWindow(1, 3)
+    grid.resizeWindow(window, 0, 2)
 })

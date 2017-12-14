@@ -1,0 +1,2 @@
+const PREFIX = ['cmd', 'ctrl']
+
