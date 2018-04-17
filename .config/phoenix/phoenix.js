@@ -12,6 +12,11 @@ Key.on('right', PREFIX, () => {
     grid.resizeWindow(window, 0, 1)
 })
 
+Key.on('up', PREFIX, () => {
+    let { window, grid } = buildGridForCurrentWindow(1, 1)
+    grid.resizeWindow(window, 0, 0)
+})
+
 Key.on('1', PREFIX, sameKeyChord(isChord => {
     let { window, grid } = buildGridForCurrentWindow(1, 3)
     grid.resizeWindow(window, 0, 0, 1, isChord ? 2 : 1)
