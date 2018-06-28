@@ -28,7 +28,6 @@ end
 fundle plugin 'edc/bass'
 fundle plugin 'tuvistavie/fish-fastdir'
 fundle plugin 'oh-my-fish/plugin-thefuck'
-fundle plugin 'oh-my-fish/plugin-brew'
 fundle plugin 'oh-my-fish/plugin-bang-bang'
 fundle plugin 'oh-my-fish/plugin-rustup'
 fundle plugin 'oh-my-fish/plugin-tmux'
@@ -38,34 +37,30 @@ fundle plugin 'oh-my-fish/plugin-android-sdk'
 fundle plugin 'oh-my-fish/plugin-export'
 fundle plugin 'oh-my-fish/plugin-pyenv'
 fundle plugin 'oh-my-fish/plugin-rvm'
+
+if [ (uname -s) = 'Darwin' ]
+  fundle plugin 'oh-my-fish/plugin-brew'
+end
+
 fundle init
-
-# Doge!
-
-alias wow 'git status'
-alias such git
-alias very git
-alias much git
-alias so git
-alias many git
 
 # various aliases
 alias fucking sudo
 alias glass 'rm -rf'
-alias dafuq 'find . -name'
 alias goddamnit 'which'
-alias shit 'cd ..'
-alias piss 'ls -lah'
 alias cunt vi
+
+# Exa
 alias ls exa
 alias ll="exa -la --git"
 
-# nvlc
-alias nvlc "~/Applications/VLC.app/Contents/MacOS/VLC --intf ncurses"
+# Docker
+alias dc docker-compose
+alias dm docker-machine
+alias ds docker-swarm
 
 set -gx EDITOR vim
 
-# Platterz
 set -x PGHOST "localhost"
 
 # Flutter
@@ -74,5 +69,4 @@ if test -d $HOME/dev/flutter/flutter/bin
 end
 
 . ~/.fishmarks/marks.fish
-
 
