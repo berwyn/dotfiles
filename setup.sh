@@ -1,28 +1,47 @@
 #!/usr/bin/env bash
 
-echo "Updating submodules"
+say() {
+    echo "-----> $@"
+}
+
+whisper() {
+    echo "---> $@"
+}
+
+setup_fish() {
+    say "Setting up Fish"
+    sudo chsh -s /usr/local/bin/fish $(whoami)
+    fish -c "fundle init && fundle install"
+}
+
+setup_macos() {
+    say "Setting up macOS"
+    # Grab brew deps
+    whisper "Brewing..."
+    brew bundle install
+
+    # Fix key repeat in VS Code
+    whisper "Setting up key repeat in VS Code"
+    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
+}
+
+say "Updating submodules"
 git submodule update --init --recursive
 
-# Install all our apps
-echo "Brewing"
-brew bundle
+# OS-specific setup
+case $(uname -a) in
+    [Dd]arwin*)
+        setup_fish
+        setup_macos
+        ;;
 
-# Node sucks, give it special attention
-echo "Installing node"
-npm i -g n
-HAS_LATEST=n ls | grep $(n --latest)
-if [[ -z $HAS_LATEST ]]; then
-    n latest
-fi
+    [Ll]inux*)
+        # TODO: Well, y'know
+        ;;
+    *)
+        >&2 echo "What even is this OS? $(uname -a)"
+        exit 1
+        ;;
+esac
 
-# Setup YouCompleteMe
-echo "Setting up YCM"
-pushd . 2>&1
-cd .vim/bundle/YouCompleteMe
-./install.py \
-    --clang-completer \
-    --omnisharp-completer \
-    --tern-completer \
-    --racer-completer \
-    --gocode-completer
-popd
