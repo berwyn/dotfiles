@@ -11,6 +11,8 @@ fishd.*
 .config/inkscape
 .config/htop
 .config/gtk-2.0
+.config/gcloud
+.config/lab.hcl
 
 **__pycache__
 

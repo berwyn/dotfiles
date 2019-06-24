@@ -34,3 +34,18 @@
 [submodule "submodules/fishmarks"]
 	path = submodules/fishmarks
 	url = https://github.com/techwizrd/fishmarks.git
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule ".vim/bundle/dockerfile"]
+	path = .vim/bundle/dockerfile
+	url = https://github.com/ekalinin/Dockerfile.vim
+[submodule ".vim/bundle/vim-editorconfig"]
+	path = .vim/bundle/vim-editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule ".vim/bundle/vim-autoswap"]
+	path = .vim/bundle/vim-autoswap
+	url = https://github.com/gioele/vim-autoswap

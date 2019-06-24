@@ -14,25 +14,15 @@ end
 
 set rtp+=/usr/local/opt/fzf
 
-"""""""""""
-"=> GENERAL
-"""""""""""
-
-if has('autocmd')
-    filetype plugin indent on
-endif
-if has('syntax') && !exists('g:syntax_on')
-    syntax enable
-end
-
-set rtp+=/usr/local/opt/fzf
-
 """"""
 "=> UI
 """"""
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" Autoswap
+let g:autoswap_detect_tmux=1
 
 " gvim
 if has('gui_running')
