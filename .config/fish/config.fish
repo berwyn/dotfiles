@@ -51,12 +51,15 @@ end
 
 fundle init
 
-# fisher uses ~/.config/fish/fishfile
-fisher
+# Replace old, painful tools with modern ones 🦀
+if [ (uname -s) = 'Darwin' ]
+    source $HOME/Library/Preferences/org.dystroy.broot/launcher/fish/br
+end
 
-# Exa
-alias ls exa
-alias ll="exa -la --git"
+alias ls="exa --grid --classify"
+alias ll="exa -bg --long --classify --header --git"
+alias tree="exa --tree"
+alias find="fd"
 
 # Docker
 alias dc docker-compose
@@ -66,15 +69,10 @@ alias ds docker-swarm
 # Misc
 alias klar clear
 
-# Git
-if command -v lab
-    alias git lab
-else if command -v hub
-    alias git hub
-end
-
 # Pyenv
 status --is-interactive; and source (pyenv init -|psub)
+# rbenv
+status --is-interactive; and source (rbenv init -|psub)
 
 set -gx EDITOR vim
 
@@ -92,6 +90,9 @@ end
 
 status --is-interactive; and . (jump shell | psub)
 
-. ~/.fishmarks/marks.fish
+if test -d ~/.fishmarks
+  . ~/.fishmarks/marks.fish
+end
 
 . (which env_parallel.fish)
+
