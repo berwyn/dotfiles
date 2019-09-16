@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/vim-autoswap"]
 	path = .vim/bundle/vim-autoswap
 	url = https://github.com/gioele/vim-autoswap
+[submodule ".vim/bundle/tsuquyomi"]
+	path = .vim/bundle/tsuquyomi
+	url = https://github.com/Quramy/tsuquyomi.git
