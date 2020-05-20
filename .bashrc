@@ -134,10 +134,21 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-eval "$(nodenv init -)"
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-eval "$(starship init bash)"
+if command -v nodenv; then 
+    eval "$(nodenv init -)"
+fi
+
+if command -v rbenv; then
+    eval "$(rbenv init -)"
+fi
+
+if command -v pyenv; then
+    eval "$(pyenv init -)"
+fi
+
+if command -v starship; then
+    eval "$(starship init bash)"
+fi
 
 if [ -z ${var+WSLENV} ]; then
     export WSL_HOST_IP=$(ipconfig.exe | awk '/WSL/ {getline; getline; getline; getline; print substr($14, 1, length($14)-1)}')

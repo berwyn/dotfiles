@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
-say() {
-    echo "-----> $@"
-}
+set -euo pipefail
 
-whisper() {
-    echo "---> $@"
-}
+TOP_LEVEL=$(dirname $(realpath $0))
+source ${TOP_LEVEL}/setup/util.sh
 
 setup_fish() {
     say "Setting up Fish"
@@ -61,6 +58,27 @@ setup_macos() {
     sudo spctl --master-enabl
 }
 
+setup_linux() {
+    say "Beginning Linux Setup"
+    whisper "Loading Linux scripts"
+    source ${TOP_LEVEL}/setup/linux.sh
+
+    whisper "Updating system packages"
+    update_system_packages
+
+    whisper "Acquiring baseline packages"
+    install_baseline_packages
+
+    whisper "Installing Rustup"
+    install_rustup
+
+    whisper "Installing Cargo packages"
+    install_cargo_packages
+
+    whisper "Linking config files"
+    link_config_files
+}
+
 say "Updating submodules"
 git submodule update --init --recursive
 
@@ -72,7 +90,7 @@ case $(uname -a) in
         ;;
 
     [Ll]inux*)
-        # TODO: Well, y'know
+        setup_linux
         ;;
     *)
         >&2 echo "What even is this OS? $(uname -a)"
