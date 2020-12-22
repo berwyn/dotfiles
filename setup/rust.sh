@@ -28,10 +28,10 @@ install_cargo_packages() {
         bat \
         broot \
         bottom \
-        delta \
         du-dust \
         exa \
         fd-find \
+        git-delta \
         hx \
         hyperfine \
         kondo \

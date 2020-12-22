@@ -22,7 +22,7 @@ setup_macos() {
     sudo spctl --master-disable
 
     whisper "Setting symlinks"
-    FILES=(".tmux.conf" ".vimrc" ".vim")
+    FILES=(".tmux.conf" ".vimrc" ".vim" ".zshrc")
     for FILE in ${FILES[*]}; do
         ln -Fihsv "$PWD/$FILE" "$HOME/$FILE"
     done
@@ -58,6 +58,29 @@ setup_macos() {
     # Show hidden apps
     defaults write com.apple.dock showhidden -bool true
     sudo killall Dock
+
+    whisper "Fixing trackpad"
+    defaults write com.apple.swipescrolldirection -bool false
+    defaults write com.apple.forceClick -bool true
+    killall cfprefsd
+
+    whisper "Setting general macOS preferences"
+    defaults write NSGlobalDomain AppleAccentColor 5
+    defaults write NSGlobalDomain AppleAquaColorVariant 1
+    defaults write NSGlobalDomain AppleInterfaceStyle -string Dark
+
+    whisper "Setting up language preferenes"
+    defaults write NSGlobalDomain AppleLanguages -array-add en-CA
+    defaults write NSGlobalDomain AppleLanguages -array-add ja-JP
+    defaults write NSGlobalDomain NSLinguisticDataAssetsRequested -array-add fr
+    defaults write NSGlobalDomain NSLinguisticDataAssetsRequested -array-add fr_CA
+    defaults write NSGlobalDomain NSLinguisticDataAssetsRequested -array-add ja
+    defaults write NSGlobalDomain NSLinguisticDataAssetsRequested -array-add ja_JP
+    defaults write NSGlobalDomain NSLinguisticDataAssetsRequested -array-add de
+    defaults write NSGlobalDomain NSLinguisticDataAssetsRequestedByChecker -array-add de
+
+    whisper "Setting timezone"
+    sudo systemsetup -settimezone America/Toronto
 
     whisper "Setting up Rustup"
     install_rustup
@@ -99,7 +122,6 @@ git submodule update --init --recursive
 case $(uname -a) in
     [Dd]arwin*)
         setup_macos
-        setup_fish
         ;;
 
     [Ll]inux*)
