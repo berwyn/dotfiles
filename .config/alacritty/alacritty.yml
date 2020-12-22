@@ -13,6 +13,7 @@
   #TERM: xterm-256color
 
 window:
+  dynamic_title: true
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -49,7 +50,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: transparent
 
   # Startup Mode (changes require restart)
   #
@@ -77,27 +78,6 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used
-  # to allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 3
-
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-tabspaces: 4
-
 # Font configuration (changes require restart)
 font:
   # Normal (roman) font face
@@ -108,9 +88,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Fira Code
-
-    # The `style` can be specified to pick a specific face.
+    family: Cascadia Code PL
     style: Regular
 
   # Bold font face
@@ -119,9 +97,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Code
-
-    # The `style` can be specified to pick a specific face.
+    family: Cascadia Code PL
     style: Bold
 
   # Italic font face
@@ -130,13 +106,11 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Code
-
-    # The `style` can be specified to pick a specific face.
+    family: Cascadia Code PL
     style: Italic
 
   # Point size
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -269,7 +243,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -339,7 +313,6 @@ selection:
   save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
 
 cursor:
   # Cursor style

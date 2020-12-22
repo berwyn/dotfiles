@@ -1,2 +1,5 @@
 [line_break]
+disabled = false
+
+[gcloud]
 disabled = true

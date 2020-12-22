@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -euxo pipefail
 
-TOP_LEVEL=$(dirname $(realpath $0))
+TOP_LEVEL=$(cd $(dirname ${0}) && pwd)
 source ${TOP_LEVEL}/setup/util.sh
 
 setup_fish() {
@@ -13,6 +13,11 @@ setup_fish() {
 
 setup_macos() {
     say "Setting up macOS"
+    whisper "Loading util scripts"
+    source ${TOP_LEVEL}/setup/util.sh
+    whisper "Loading Rust scripts"
+    source ${TOP_LEVEL}/setup/rust.sh
+
     whisper "Disabling Gatekeeper"
     sudo spctl --master-disable
 
@@ -54,14 +59,22 @@ setup_macos() {
     defaults write com.apple.dock showhidden -bool true
     sudo killall Dock
 
+    whisper "Setting up Rustup"
+    install_rustup
+
+    whisper "Installing Cargo packages"
+    install_cargo_packages
+
     whisper "Re-enabling Gatekeeper"
-    sudo spctl --master-enabl
+    sudo spctl --master-enable
 }
 
 setup_linux() {
     say "Beginning Linux Setup"
     whisper "Loading Linux scripts"
     source ${TOP_LEVEL}/setup/linux.sh
+    whisper "Loading Rust scripts"
+    source ${TOP_LEVEL}/setup/rust.sh
 
     whisper "Updating system packages"
     update_system_packages
