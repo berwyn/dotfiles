@@ -3,3 +3,11 @@ disabled = false
 
 [gcloud]
 disabled = true
+
+[python]
+detect_extensions = []
+
+[nodejs]
+symbol = "⬡ "
+detect_extensions = []
+

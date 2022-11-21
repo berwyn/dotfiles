@@ -13,6 +13,8 @@ if has('syntax') && !exists('g:syntax_on')
 end
 
 set rtp+=/usr/local/opt/fzf
+set wrap!
+set directory^=/tmp/
 
 """"""
 "=> UI

@@ -35,6 +35,7 @@ install_cargo_packages() {
         hx \
         hyperfine \
         kondo \
+        mask \
         procs \
         ripgrep \
         sd \

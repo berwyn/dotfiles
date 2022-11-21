@@ -13,6 +13,7 @@ fishd.*
 .config/gtk-2.0
 .config/gcloud
 .config/lab.hcl
+.config/lnav
 
 **__pycache__
 

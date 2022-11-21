@@ -28,9 +28,15 @@ if [[ -d "${HOME}/.local/bin" ]]; then
     export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
+if [[ -d "$(brew --prefix php@7.4)" ]]; then
+    export PATH="$(brew --prefix php@7.4)/bin:${PATH}"
+fi
+
 autoload -Uz compinit && compinit -y
 
 export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
